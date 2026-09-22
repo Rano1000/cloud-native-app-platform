@@ -1,0 +1,28 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8080:3000"
+    environment:
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_USER: appuser
+      DB_PASSWORD: apppassword
+      DB_NAME: appdb
+      REDIS_HOST: cache
+      REDIS_PORT: 6379
+
+  database:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: appuser
+      POSTGRES_PASSWORD: apppassword
+      POSTGRES_DB: appdb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  cache:
+    image: redis:8-alpine
+
+volumes:
+  postgres_data:
