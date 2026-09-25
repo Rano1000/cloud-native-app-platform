@@ -28,7 +28,7 @@ redisClient.connect();
 // Root endpoint
 app.get("/", (req, res) => {
   res.json({
-    message: "Cloud Native API v2 is running",
+    message: "Cloud Native API v3 is running",
     status: "healthy"
   });
 });
@@ -63,4 +63,3 @@ app.get("/cache-check", async (req, res) => {
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`API listening on port ${PORT}`);
 });
-
